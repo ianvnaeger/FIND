@@ -35,7 +35,7 @@ def Decider():
     # Adds a densely-connected layer with 64 units to the model:
     #model.add(keras.layers.Dense(64, kernel_regularizer=keras.regularizers.l1(0.01))
     # Add another:
-    model.add(keras.layers.Dense(64, activation='sigmoid'))
+    model.add(keras.layers.Dense(64, input_shape(32, 8), activation='sigmoid'))
     # Adds another
     model.add(keras.layers.Dense(64, activation='relu'))
     # Add another:
@@ -59,7 +59,7 @@ def Decider():
     ]
 
     model.fit(data, labels, epochs=10, callbacks=callbacks, batch_size=32, validation_data=(val_data, val_labels))
-    model.save('FIND-model.h5')
+    model.save('./FIND-model.h5')
     # model = keras.models.load_model('FIND-model.h5')
     # ^^^ to load a saved model
 
