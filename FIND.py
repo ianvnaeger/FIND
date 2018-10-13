@@ -35,7 +35,7 @@ def Decider():
     # Adds a densely-connected layer with 64 units to the model:
     #model.add(keras.layers.Dense(64, kernel_regularizer=keras.regularizers.l1(0.01))
     # Add another:
-    model.add(keras.layers.Dense(64, input_shape(32, 8), activation='sigmoid'))
+    model.add(keras.layers.Dense(64, input_shape=(32, 8), activation='sigmoid'))
     # Adds another
     model.add(keras.layers.Dense(64, activation='relu'))
     # Add another:
