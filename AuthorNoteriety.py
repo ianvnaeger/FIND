@@ -16,12 +16,20 @@ def AuthorNoteriety( authorName ):
     req = requests.get(url = search, params = None)
     data = req.json()
 
+    headers = {
+        "X-AYLIEN-TextAPI-Application-ID":"f94984be",
+        "X-AYLIEN-TextAPI-Application-Key":"83a7b904239577d9967e5402c461f388"
+    }
+
     for i in range(0,len(data['items'])):
-        print(data['items'][i]['link'])
-        #if ( authorName == findAuthors(data.items[i].link) ):
-        if( 1==1 ):
+        #print(data['items'][i]['link'])
+        search = 'https://api.aylien.com/api/v1/extract?url=' + data['items'][i]['link']
+        linkReq = requests.get(url = search, headers=headers) 
+        authorData = linkReq.json()
+        #print(authorData['author'])
+        if( authorName == authorData['author'] ):
             noteriety += 1
         
     return noteriety
 
-print(AuthorNoteriety('Joe Guilliums'))
+print(AuthorNoteriety('Lizette Alvarez'))

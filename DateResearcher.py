@@ -6,8 +6,8 @@ def DateResearchValue( date, keywords ):
     dateValue = 0
     url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAT3PKpgtjWdjHBemeHT5ZkDbwnZBARBEE&cx=011809875003834266328:_eunbtqpsiq&q='
     search = url + keywords
-    dateBefore = date - 100
-    dateAfter = date + 100 
+    dateBefore = date - 10000
+    dateAfter = date + 10000 
     search = url + keywords + '&sort=date:r:' + str(dateBefore) + ':' + str(dateAfter) 
 
     req = requests.get(url = search, params = None)
@@ -21,4 +21,4 @@ def DateResearchValue( date, keywords ):
 
     return dateValue
 
-print(DateResearchValue( 20140624, "Fortunate Son"))
+print(DateResearchValue( 20180624, "Fortunate Son"))
