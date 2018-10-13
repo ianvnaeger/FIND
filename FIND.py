@@ -43,7 +43,7 @@ def Decider():
     # Add a softmax layer with 1 output unit:
     model.add(keras.layers.Dense(1, activation='softmax')) 
 
-    model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     data = np.random.random((1000, 32))
     labels = np.random.random((1000, 1))
