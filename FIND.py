@@ -52,6 +52,7 @@ def Decider():
     #call Classifier
     #call Decider
 
-print("starting")
-x = Decider()
-print("we did it")
+def main():
+    print("starting")
+    x = Decider()
+    print("we did it")
