@@ -2,24 +2,6 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 
-#def hello_world(request):
-#    """Responds to any HTTP request.
-#    Args:
-#        request (flask.Request): HTTP request object.
-#    Returns:
-#        The response text or any set of values that can be turned into a
-#        Response object using
-#        `make_response <http://flask.pocoo.org/docs/0.12/api/#flask.Flask.make_response>`.
-#    """
-#    request_json = request.get_json()
-#    if request.args and 'message' in request.args:
-#        return request.args.get('message')
-#    elif request_json and 'message' in request_json:
-#        return request_json['message']
-#    else:
-#        return f'Hello World!'
-
-
 #def Parser(request): 
     #given a link to an article, the function can find information about the article
         #information to be found: author, source of article, title, etc.
@@ -43,7 +25,7 @@ def Decider():
     # Add a softmax layer with 1 output unit:
     model.add(keras.layers.Dense(1, activation='softmax')) 
 
-    model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=keras.optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     data = np.random.random((1000, 32))
     labels = np.random.random((1000, 1))
