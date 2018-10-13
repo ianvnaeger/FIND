@@ -2,6 +2,21 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 
+import logging
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request.')
+    return """
+    An internal error occurred: <pre>{}</pre>
+    See logs for full stacktrace.
+    """.format(e), 500
+
+
+
 #def Parser(request): 
     #given a link to an article, the function can find information about the article
         #information to be found: author, source of article, title, etc.
@@ -10,6 +25,7 @@ import numpy as np
 #def Classifier():
     #take the parsed info, make classifiers based on the validity of the info
 #   return
+
 
 def Decider():
     #given ratings from the classifier, use Machine Learning Magic to determine if fake news
@@ -51,7 +67,8 @@ def Decider():
     #call Parser
     #call Classifier
     #call Decider
-
+    
+@app.route('/')
 def main():
     print("starting")
     x = Decider()
