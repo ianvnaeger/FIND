@@ -16,5 +16,20 @@ def hello_world(request):
         return f'Hello World!'
 
 
-def FIND(request): 
-    request_json = request.get_json()
+def Parser(request): 
+    #given a link to an article, the function can find information about the article
+        #information to be found: author, source of article, title, etc.
+    return
+
+def Classifier():
+    #take the parsed info, make classifiers based on the validity of the info
+    return
+
+def Decider():
+    #given ratings from the classifier, use Machine Learning Magic to determine if fake news
+    return
+
+def FIND():
+    #call Parser
+    #call Classifier
+    #call Decider
