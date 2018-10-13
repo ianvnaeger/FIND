@@ -46,7 +46,7 @@ def Decider():
     model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
     data = np.random.random((1000, 32))
-    labels = np.random.random((1000, 18=8=8=8=8=8=8=))
+    labels = np.random.random((1000, 1))
 
     val_data = np.random.random((100, 32))
     val_labels = np.random.random((100, 1))
