@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>F.I.N.D. | Fake Information & News Detector</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <style>
+            body{
+                background-color: #fdf5e8;
+                font-family: serif;
+            }
+            
+            header{
+                font-size: 80pt;
+                font-weight: 800;
+            }
+            
+            h3{
+                border-top: 2px solid black;
+                border-bottom: 2px solid black;
+                padding: 1%;
+            }
+            
+            h4{
+                border-bottom: 2px solid black;
+                padding: 3%;
+            }
+            
+            h5{
+                border-bottom: 2px solid black;
+                padding: 3%;
+            }
+            
+            .row{
+                text-align: center;
+            }
+            
+            .middleColumn{
+                border-left: 2px solid black;
+                border-right: 2px solid black;
+            }
+            
+            form.searchForm input[type=text] {
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid grey;
+                float: left;
+                width: 80%;
+                background: #f1f1f1;
+                margin-top: 2%;
+                margin-bottom: 5%;
+            }
+
+            form.searchForm button {
+                float: left;
+                width: 20%;
+                padding: 10px;
+                background: #f1f1f1;
+                color: black;
+                font-size: 17px;
+                border: 1px solid grey;
+                border-left: none;
+                cursor: pointer;
+                margin-top: 2%;
+                margin-bottom: 5%;
+            }
+
+            form.searchForm button:hover {
+                background: #bbc1c0;
+            }
+            
+            p{
+                text-align: left;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <header>F.I.N.D.</header>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Fake Information & News Detector</h3>
+                </div>
+            </div>
+            <div id="columnHeaders" class="row">
+                <div class="col-sm-3">
+                    <h5>Something</h5>
+                </div>
+                <div class="col-sm-6 middleColumn">
+                    <h4>Enter the Article You Want to Check</h4>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex tellus, pulvinar at ligula at, tristique dapibus arcu. Duis et nisi sapien. Pellentesque luctus tincidunt urna, a blandit tortor finibus ut. Aliquam ultrices odio dictum nunc consectetur, ac ultricies sapien bibendum. Donec ac imperdiet nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam vulputate volutpat nisi, eu dignissim augue bibendum ut. In egestas mauris lectus, non blandit nisi egestas ut. Vestibulum condimentum vestibulum ante eu ornare. Vestibulum sed tellus bibendum, malesuada tortor et, faucibus urna. Vivamus vulputate in justo ut consectetur. Suspendisse laoreet interdum elit, nec sollicitudin purus vehicula sed.</p>
+                </div>
+                <div class="col-sm-6 middleColumn">
+                    <form class="searchForm" action="/action_page.php" method="get">
+                        <input type="text" placeholder="example.com" name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <p>Aenean malesuada malesuada risus, vitae maximus ipsum congue a. Ut euismod tempus magna id tempus. Praesent vulputate tincidunt nisl vitae ornare. Duis ultrices ullamcorper mi nec accumsan. Suspendisse potenti. Pellentesque ante sapien, finibus et mollis in, tristique in urna. Donec vitae nibh consequat, varius ante vitae, congue dui. Vivamus ex leo, vehicula eget ante sit amet, finibus porttitor orci. Nulla vitae volutpat elit, ut maximus ipsum. Cras quis posuere nisi. Quisque et massa et nunc ultrices cursus at nec metus.</p>
+                        <p>Phasellus hendrerit laoreet ex, nec feugiat velit. Nulla quis ex vel tellus dignissim egestas. Ut at dictum purus, vel luctus urna. Nulla quis ex vitae est vehicula interdum. Donec vitae cursus nisi. Curabitur sit amet nunc porta velit venenatis consectetur. Quisque laoreet libero sed nunc porttitor, sed blandit nisl aliquam. Mauris condimentum libero id sagittis fringilla. Suspendisse lobortis quam et urna pharetra ultrices. Aenean pulvinar convallis dui. Maecenas in dolor bibendum, sagittis nisi eget, molestie justo. Nunc sollicitudin egestas molestie. Mauris at justo lacus. Vestibulum finibus consectetur pellentesque. Cras vel scelerisque neque.</p>
+                    </form>
+                </div>
+                <div class="col-sm-3">
+                    <p>This API was created by Ian Naeger, Landen Eagan, Brian Robinson, and Cameron Warder for the TigerHacks competition at the University of Missouri in 2018.</p>
+                    <p>Donec vitae cursus nisi. Curabitur sit amet nunc porta velit venenatis consectetur. Quisque laoreet libero sed nunc porttitor, sed blandit nisl aliquam. Mauris condimentum libero id sagittis fringilla. Suspendisse lobortis quam et urna pharetra ultrices. Aenean pulvinar convallis dui. Maecenas in dolor bibendum, sagittis nisi eget, molestie justo. Nunc sollicitudin egestas molestie. Mauris at justo lacus. Vestibulum finibus consectetur pellentesque. Cras vel scelerisque neque.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
