@@ -77,6 +77,7 @@ def Polarity(string):
 
 def return_keywords(headline):	
 	stop_words = set(get_stop_words('en'))
+    headline = headline.lower()
 	word_tokens = headline.split() 
 	filtered_sentence = []
 	for w in word_tokens: 
@@ -172,6 +173,7 @@ def main():
     print('sourceRating')
     #x = Decider()
     # print("we did it")
+    
     return 'success'
 
 # main()
