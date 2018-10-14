@@ -4,7 +4,7 @@ from textblob import TextBlob
 import numpy as np
 import requests
 import articleDateExtractor
-import SQLAlchemy
+import sqlalchemy
 import os
 from stop_words import get_stop_words
 import logging
