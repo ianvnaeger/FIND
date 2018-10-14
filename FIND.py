@@ -4,11 +4,15 @@ from textblob import TextBlob
 import numpy as np
 import requests
 import articleDateExtractor
+import SQLAlchemy
+import os
 from stop_words import get_stop_words
 import logging
 from flask import Flask
 from flask import request
 from sqlalchemy import or_
+
+app = Flask(__name__)
 
 # import pymysql.cursors
 # Environment variables are defined in app.yaml.
