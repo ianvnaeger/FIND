@@ -172,5 +172,6 @@ def main():
     print('sourceRating')
     #x = Decider()
     # print("we did it")
+    return 'success'
 
 # main()
