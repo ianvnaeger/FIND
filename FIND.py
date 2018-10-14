@@ -133,7 +133,7 @@ def AuthorNoteriety( authorName ):
     noteriety = 0
     if( authorName == None ):
         return noteriety
-    url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAT3PKpgtjWdjHBemeHT5ZkDbwnZBARBEE&cx=011809875003834266328:_eunbtqpsiq&q='
+    url = 'https://cse.google.com/cse?cx=011809875003834266328:_eunbtqpsiq&q='
     search = url + authorName
 
     req = requests.get(url = search, params = None)
