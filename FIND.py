@@ -1,12 +1,10 @@
 # import tensorflow as tf
 # from tensorflow import keras
+from textblob import TextBlob
 import numpy as np
 import requests
 import articleDateExtractor
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize 
+from stop_words import get_stop_words
 import logging
 from flask import Flask
 from flask import request
@@ -34,15 +32,12 @@ def Parser( url ):
     data = req.json()
 
     date = articleDateExtractor.extractArticlePublishedDate(url)
-    #date = articleDateExtractor.extractArticlePublishedDate("http://techcrunch.com/2015/11/29/tyro-payments/")
 
     formattedDate = date
-    #print(date)
     if( date != None ):
         formattedDate = str(date).replace("-", "")
         formattedDate = formattedDate[:-9]
         formattedDate = int(formattedDate)
-        #print(formattedDate)
 
     parsed = {
         'title': data['title'],
@@ -73,23 +68,16 @@ def DateResearchValue( date, keywords ):
         matches = list(set(return_keywords(data['items'][i]['title'])).intersection(keywords))
         if ( len(matches) > 1 ):
                 dateValue += 1
-        #if( data['items'][i]['title'] has keywords ):
-        # from ToneSensor, find keywords for this data
-        # confirm intersection has 3+ keywords
-        #if( 1==1 ):
-        #    dateValue += 1
 
     return dateValue
 
-sia = SIA()
-
-def Polarity(article):
-	pol_score = sia.polarity_scores(article)
-	return pol_score
+def Polarity(string):
+    sentiment = TextBlob(string)
+    return sentiment.sentiment.polarity
 
 def return_keywords(headline):	
-	stop_words = set(stopwords.words('english'))
-	word_tokens = word_tokenize(headline.lower()) 
+	stop_words = set(get_stop_words('en'))
+	word_tokens = headline.split() 
 	filtered_sentence = []
 	for w in word_tokens: 
 		if w not in stop_words: 
@@ -165,7 +153,7 @@ def Decider():
 def main():
     print('start')
     sentUrl = request.args.get('url')
-    # sentUrl = 'https://www.cnet.com/news/google-plus-and-life-after-social-media-death/'
+    #sentUrl = 'https://www.cnet.com/news/google-plus-and-life-after-social-media-death/'
     info = Parser(sentUrl)
 
     #sourceRating = sourceRater(sentUrl)

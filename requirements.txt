@@ -5,4 +5,5 @@ gunicorn==19.9.0
 Flask==1.0.2
 requests==2.19.1
 articleDateExtractor==0.20
-nltk==3.3
+stop_words==2018.7.23
+textblob==0.15.1
