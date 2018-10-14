@@ -10,6 +10,7 @@ from stop_words import get_stop_words
 import logging
 from flask import Flask
 from flask import request
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 
 app = Flask(__name__)
