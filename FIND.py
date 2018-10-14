@@ -4,10 +4,22 @@ from textblob import TextBlob
 import numpy as np
 import requests
 import articleDateExtractor
+import sqlalchemy
+import os
 from stop_words import get_stop_words
 import logging
 from flask import Flask
 from flask import request
+from sqlalchemy import or_
+
+app = Flask(__name__)
+
+# import pymysql.cursors
+# Environment variables are defined in app.yaml.
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 app = Flask(__name__)
 
@@ -76,13 +88,14 @@ def Polarity(string):
     return sentiment.sentiment.polarity
 
 def return_keywords(headline):	
-	stop_words = set(get_stop_words('en'))
-	word_tokens = headline.split() 
-	filtered_sentence = []
-	for w in word_tokens: 
-		if w not in stop_words: 
-			filtered_sentence.append(w)
-	return filtered_sentence
+    headline = headline.lower()
+    stop_words = set(get_stop_words('en'))
+    word_tokens = headline.split() 
+    filtered_sentence = []
+    for w in word_tokens: 
+        if w not in stop_words: 
+            filtered_sentence.append(w)
+    return filtered_sentence
 
 def AuthorNoteriety( authorName ):
     noteriety = 0
@@ -107,6 +120,35 @@ def AuthorNoteriety( authorName ):
             noteriety += 1
         
     return noteriety
+
+def SourceValidation(url):
+
+    url.replace("https://","")
+    url.replace("http://","")
+
+    endIndex = url.index("/")
+    endOfUrl = len(url) - 1
+    url[:-(endOfUrl - endIndex)]
+
+    httpUrl = 'http://' + url
+    httpsUrl = 'https://' + url
+
+    #connection = pymysql.connect(host='35.239.255.99', user='root', password='password', db='source_validation', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+
+    #cursor = db.cursor()
+    # db.Model.query.
+    for score in db.Model.query('urls').filter(or_(url==httpsUrl, url==httpUrl)):
+        print(score)
+        send = score
+
+    # with connection.cursor() as cursor:
+    #     sql = "SELECT `score` FROM `urls` WHERE `url` = %s OR `url` = %s"
+    #     cursor.execute(sql, (httpUrl, httpsUrl,))
+    #     score = cursor.fetchone()
+    #     print(score)
+    # connection.close()
+
+    return send
 
 def Decider():
     #given ratings from the classifier, use Machine Learning Magic to determine if fake news
@@ -170,8 +212,10 @@ def main():
     print(titlePolarity)
     print(dateRating)
     print('sourceRating')
+    return print(SourceValidation('https://www.cnet.com/news/google-plus-and-life-after-social-media-death/'))
     #x = Decider()
     # print("we did it")
-    return 'success'
+
+    #return 'success'
 
 # main()
