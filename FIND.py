@@ -165,6 +165,8 @@ def SourceValidation( url ):
     for i in range(0, len(table)): 
         if( httpsUrl==table[i][0] or httpUrl==table[i][0] ): 
             return table[i][1]
+        else :
+            return 3
 
 def Decider():
     #given ratings from the classifier, use Machine Learning Magic to determine if fake news
@@ -206,7 +208,7 @@ def Decider():
 def main():
     print('start')
     sentUrl = request.args.get('url')
-    #sentUrl = 'https://www.cnet.com/news/google-plus-and-life-after-social-media-death/'
+    # sentUrl = 'https://www.cnet.com/news/google-plus-and-life-after-social-media-death/'
     info = Parser(sentUrl)
 
     sourceRating = SourceValidation(sentUrl)
@@ -219,15 +221,15 @@ def main():
 
     #print(info)
     #print("Author: "+authorRating+"\nArticle: "+articlePolarity+"\nTitle: "+titlePolarity+"\nDate: "+dataRating+"\nSource: "+sourceRating)
-    print(authorRating)
-    print(articlePolarity)
-    print(titlePolarity)
-    print(dateRating)
-    print(sourceRating)
+    # print(authorRating)
+    # print(articlePolarity)
+    # print(titlePolarity)
+    # print(dateRating)
+    # print(sourceRating)
 
-    return print("Author: "+authorRating+"\nArticle: "+articlePolarity+"\nTitle: "+titlePolarity+"\nDate: "+dateRating+"\nSource: "+sourceRating)
+    return print("Author: "+str(authorRating)+"\nArticle: "+str(articlePolarity)+"\nTitle: "+str(titlePolarity)+"\nDate: "+str(dateRating)+"\nSource: "+str(sourceRating))
     #x = Decider()
 
     #return 'success'
 
-#main()
+# main()
