@@ -227,7 +227,7 @@ def main():
     # print(dateRating)
     # print(sourceRating)
 
-    return print("Author: "+str(authorRating)+"\nArticle: "+str(articlePolarity)+"\nTitle: "+str(titlePolarity)+"\nDate: "+str(dateRating)+"\nSource: "+str(sourceRating))
+    return "Author: "+str(authorRating)+"\nArticle: "+str(articlePolarity)+"\nTitle: "+str(titlePolarity)+"\nDate: "+str(dateRating)+"\nSource: "+str(sourceRating)
     #x = Decider()
 
     #return 'success'
