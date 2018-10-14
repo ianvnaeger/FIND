@@ -94,6 +94,8 @@ def DateResearchValue( date, keywords ):
     #date needs to be in format -> 20140815:20140931
     #keywords can be a string with words seperated by spaces, I guess
     dateValue = 0
+    if( date == None ):
+        return dateValue
     url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAT3PKpgtjWdjHBemeHT5ZkDbwnZBARBEE&cx=011809875003834266328:_eunbtqpsiq&q='
     search = url
     for i in range(1,len(keywords)):    
@@ -129,6 +131,8 @@ def return_keywords(headline):
 
 def AuthorNoteriety( authorName ):
     noteriety = 0
+    if( authorName == None ):
+        return noteriety
     url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAT3PKpgtjWdjHBemeHT5ZkDbwnZBARBEE&cx=011809875003834266328:_eunbtqpsiq&q='
     search = url + authorName
 
