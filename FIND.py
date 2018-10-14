@@ -12,6 +12,7 @@ from flask import Flask
 from flask import request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
+from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
 
@@ -134,13 +135,21 @@ def SourceValidation(url):
     httpUrl = 'http://' + url
     httpsUrl = 'https://' + url
 
+    Base = declaritive_base()
+
+    class Source_validation(Base):
+        __tablename__ = 'source_validation'
+        id = Column(Integer, primary_key=True)
+        url = Column(String(100))
+        score = Column(Integer)
+
     #connection = pymysql.connect(host='35.239.255.99', user='root', password='password', db='source_validation', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
     #cursor = db.cursor()
     # db.Model.query.
-    for score in db.Model.query('urls').filter(or_(url==httpsUrl, url==httpUrl)):
-        print(score)
-        send = score
+    for item in db.Model.query(Source_validation).filter(or_(url==httpsUrl, url==httpUrl)):
+        print(item.score)
+        send = item.score
 
     # with connection.cursor() as cursor:
     #     sql = "SELECT `score` FROM `urls` WHERE `url` = %s OR `url` = %s"
