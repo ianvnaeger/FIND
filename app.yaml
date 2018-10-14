@@ -5,6 +5,13 @@ entrypoint: gunicorn -b :$PORT FIND:app
 runtime_config:
   python_version: 3
 
+env_variables:
+    # Replace user, password, database, and instance connection name with the values obtained
+    # when configuring your Cloud SQL instance.
+    SQLALCHEMY_DATABASE_URI: >-
+      mysql+pymysql://root:password@/source_validation?unix_socket=/cloudsql/find-219301:us-central1:find-mysql
+beta_settings:
+    cloud_sql_instances: find-219301:us-central1:find-mysql
 # This sample incurs costs to run on the App Engine flexible environment. 
 # The settings below are to reduce costs during testing and are not appropriate
 # for production use. For more information, see:
