@@ -16,6 +16,7 @@ def Parser( url ):
     date = articleDateExtractor.extractArticlePublishedDate(url)
     #date = articleDateExtractor.extractArticlePublishedDate("http://techcrunch.com/2015/11/29/tyro-payments/")
 
+    formattedDate = date
     #print(date)
     if( date != None ):
         formattedDate = str(date).replace("-", "")
@@ -24,6 +25,7 @@ def Parser( url ):
         #print(formattedDate)
 
     parsed = {
+        'title': data['title'],
         'author': data['author'],
         'article': data['article'],
         'date': formattedDate

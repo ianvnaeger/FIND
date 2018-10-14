@@ -4,3 +4,5 @@ numpy==1.15.2
 gunicorn==19.9.0
 Flask==1.0.2
 requests==2.19.1
+articleDateExtractor==0.20
+nltk==3.3

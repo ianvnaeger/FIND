@@ -27,7 +27,7 @@ def AuthorNoteriety( authorName ):
         linkReq = requests.get(url = search, headers=headers) 
         authorData = linkReq.json()
         #print(authorData['author'])
-        if( authorName == authorData['author'] ):
+        if( authorName == authorData['author'] ): #might want to check if api finds multiple authors
             noteriety += 1
         
     return noteriety
