@@ -8,6 +8,7 @@ from stop_words import get_stop_words
 import logging
 from flask import Flask
 from flask import request
+from sqlalchemy import or_
 
 # import pymysql.cursors
 # Environment variables are defined in app.yaml.
@@ -83,14 +84,14 @@ def Polarity(string):
     return sentiment.sentiment.polarity
 
 def return_keywords(headline):	
-	stop_words = set(get_stop_words('en'))
     headline = headline.lower()
-	word_tokens = headline.split() 
-	filtered_sentence = []
-	for w in word_tokens: 
-		if w not in stop_words: 
-			filtered_sentence.append(w)
-	return filtered_sentence
+    stop_words = set(get_stop_words('en'))
+    word_tokens = headline.split() 
+    filtered_sentence = []
+    for w in word_tokens: 
+        if w not in stop_words: 
+            filtered_sentence.append(w)
+    return filtered_sentence
 
 def AuthorNoteriety( authorName ):
     noteriety = 0
@@ -132,7 +133,7 @@ def SourceValidation(url):
 
     #cursor = db.cursor()
     # db.Model.query.
-    for score in db.Model.query(urls).filter(or_(url==httpsUrl, url==httpUrl)):
+    for score in db.Model.query('urls').filter(or_(url==httpsUrl, url==httpUrl)):
         print(score)
         send = score
 
