@@ -136,7 +136,7 @@ def SourceValidation(url):
     httpUrl = 'http://' + url
     httpsUrl = 'https://' + url
 
-    Base = declaritive_base()
+    Base = declarative_base()
 
     class Source_validation(Base):
         __tablename__ = 'source_validation'
